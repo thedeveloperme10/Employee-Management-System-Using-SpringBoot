@@ -1,10 +1,10 @@
-package com.employeemanagementsystem;
+package com.emsmanagementsystem.emsapplicationservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeeManagementSystemApplicationTests {
+class EmsApplicationServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
