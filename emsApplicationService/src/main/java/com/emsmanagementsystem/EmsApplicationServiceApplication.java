@@ -1,13 +1,13 @@
-package com.employeemanagementsystem;
+package com.emsmanagementsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmployeeManagementSystemApplication {
+public class EmsApplicationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeeManagementSystemApplication.class, args);
+		SpringApplication.run(EmsApplicationServiceApplication.class, args);
 	}
 
 }
