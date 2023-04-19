@@ -23,4 +23,19 @@ public class EMSAppService {
     public Employee addEmployee(Employee employee) {
         return httpUtil.add(employee);
     }
+
+    @SneakyThrows
+    public Employee getEmployeeById(String id) {
+        return httpUtil.get(id);
+    }
+
+    @SneakyThrows
+    public Employee updateEmployeeById(String id, Employee employee) {
+        return httpUtil.put(id, employee);
+    }
+
+    @SneakyThrows
+    public void deleteEmployeeById(String id) {
+        httpUtil.delete(id);
+    }
 }

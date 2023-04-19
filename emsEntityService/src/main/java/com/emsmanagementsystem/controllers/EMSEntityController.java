@@ -19,8 +19,23 @@ public class EMSEntityController {
         return emsEntityService.getAllEmployees();
     }
 
+    @GetMapping(path = "/getEmployeeById/{id}")
+    public Employee getEmployeeById(@PathVariable(value = "id") String id){
+        return emsEntityService.getEmployeeById(id);
+    }
+
     @PostMapping(path = "/addEmployee")
     public Employee addEmployee(@RequestBody Employee employee){
         return emsEntityService.addEmployee(employee);
+    }
+
+    @PutMapping(path = "/updateEmployee/{id}")
+    public Employee updateEmployeeById(@PathVariable(value = "id") String id, @RequestBody Employee employee){
+        return emsEntityService.updateEmployeeById(id, employee);
+    }
+
+    @DeleteMapping(path = "/deleteEmployeeById/{id}")
+    public void deleteEmployeeById(@PathVariable(value = "id") String id){
+        emsEntityService.deleteEmployeeById(id);
     }
 }
