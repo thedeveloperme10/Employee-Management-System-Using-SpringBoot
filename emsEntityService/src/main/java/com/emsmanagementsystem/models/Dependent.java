@@ -12,6 +12,8 @@ public class Dependent {
 
     private String employeeId;
 
+    private String name;
+
     private int age;
 
     private String gender;
