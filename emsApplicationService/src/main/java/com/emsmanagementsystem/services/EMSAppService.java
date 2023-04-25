@@ -1,6 +1,7 @@
 package com.emsmanagementsystem.services;
 
 import com.emsmanagementsystem.models.Employee;
+import com.emsmanagementsystem.models.EntityWrapper;
 import com.emsmanagementsystem.utils.HttpUtil;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,10 @@ public class EMSAppService {
     @SneakyThrows
     public void deleteEmployeeById(String id) {
         httpUtil.delete(id);
+    }
+
+    @SneakyThrows
+    public EntityWrapper getEmpWrapperById(String id) {
+        return httpUtil.getEntity(id);
     }
 }
