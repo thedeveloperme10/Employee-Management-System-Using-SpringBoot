@@ -1,6 +1,7 @@
 package com.emsmanagementsystem.utils;
 
 import com.emsmanagementsystem.models.Employee;
+import com.emsmanagementsystem.models.EntityWrapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,21 @@ public class HttpUtil {
             throw new Exception("Employee's record cannot be found");
         }
         return mapper.readValue(response.body(), Employee.class);
+    }
+
+    public EntityWrapper getEntity(String id) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        String url = "http://localhost:8081/ems/entity/getEmpWrapperById/" + id;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(url))
+                .header("content-type", "application/json")
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        if(response.statusCode() != 200){
+            throw new Exception("Employee's record cannot be found");
+        }
+        return mapper.readValue(response.body(), EntityWrapper.class);
     }
 
     public Employee put(String id, Employee employee) throws Exception {

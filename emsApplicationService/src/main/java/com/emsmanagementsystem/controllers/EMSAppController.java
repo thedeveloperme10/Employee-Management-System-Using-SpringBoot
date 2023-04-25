@@ -1,6 +1,7 @@
 package com.emsmanagementsystem.controllers;
 
 import com.emsmanagementsystem.models.Employee;
+import com.emsmanagementsystem.models.EntityWrapper;
 import com.emsmanagementsystem.services.EMSAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +38,10 @@ public class EMSAppController {
     @DeleteMapping(path = "/deleteEmployeeById/{id}")
     public void deleteEmployeeById(@PathVariable(value = "id") String id){
         emsAppService.deleteEmployeeById(id);
+    }
+
+    @GetMapping(path = "/getEmpWrapperById/{id}")
+    public EntityWrapper getNetSalaryById(@PathVariable(value = "id") String id){
+        return emsAppService.getEmpWrapperById(id);
     }
 }
