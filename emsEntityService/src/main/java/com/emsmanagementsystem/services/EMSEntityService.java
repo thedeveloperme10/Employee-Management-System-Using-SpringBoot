@@ -21,8 +21,8 @@ public class EMSEntityService {
         return employeeRepository.findAll();
     }
 
-    public Employee addEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public List<Employee> addEmployee(List<Employee> employees) {
+        return employeeRepository.saveAll(employees);
     }
 
     public Employee getEmployeeById(String id) {
@@ -31,16 +31,16 @@ public class EMSEntityService {
     }
 
     public Employee updateEmployeeById(String id, Employee employee) {
-        Optional<Employee> employees = employeeRepository.findById(id);
-        if(employees.isPresent()){
+        Optional<Employee> employeeDB = employeeRepository.findById(id);
+        if(employeeDB.isPresent()){
             return employeeRepository.save(employee);
         }
         return null;
     }
 
     public void deleteEmployeeById(String id) {
-        Optional<Employee> employees = employeeRepository.findById(id);
-        if(employees.isPresent()){
+        Optional<Employee> employeeDB = employeeRepository.findById(id);
+        if(employeeDB.isPresent()){
             employeeRepository.deleteById(id);
         }
     }
@@ -187,7 +187,7 @@ public class EMSEntityService {
                             netExpenditure += salary.getBasicPay() + salary.getCommuteAllowance() + salary.getMealAllowance() + salary.getPhoneAllowance() + salary.getInternetAllowance();
                         }
                     }
-                    String dependentId = "";
+                    String dependentId;
                     for(Dependent dependent: dependents){
                         if(dependent.getEmployeeId().equals(employeeId)){
                             dependentId = dependent.getDependentId();
@@ -203,8 +203,9 @@ public class EMSEntityService {
                         }
                     }
                 }
-                departmentNetExpenditure.setNetExpenditure(netExpenditure);
             }
+            netExpenditure *= 12;
+            departmentNetExpenditure.setNetExpenditure(netExpenditure);
             departmentNetExpenditures.add(departmentNetExpenditure);
         }
         return departmentNetExpenditures;

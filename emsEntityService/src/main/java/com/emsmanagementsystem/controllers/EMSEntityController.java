@@ -25,12 +25,12 @@ public class EMSEntityController {
         return emsEntityService.getEmployeeById(id);
     }
 
-    @PostMapping(path = "/addEmployee")
-    public Employee addEmployee(@RequestBody Employee employee){
-        return emsEntityService.addEmployee(employee);
+    @PostMapping(path = "/addEmployees")
+    public List<Employee> addEmployees(@RequestBody List<Employee> employees){
+        return emsEntityService.addEmployee(employees);
     }
 
-    @PutMapping(path = "/updateEmployee/{id}")
+    @PutMapping(path = "/updateEmployeeById/{id}")
     public Employee updateEmployeeById(@PathVariable(value = "id") String id, @RequestBody Employee employee){
         return emsEntityService.updateEmployeeById(id, employee);
     }
