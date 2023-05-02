@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -118,6 +119,7 @@ public class EMSEntityService {
                         dependents.add(dependent);
                     }
                 }
+                Collections.sort(dependents);
                 ew.setDependents(dependents);
 
                 while (departmentCursor.hasNext()) {
@@ -154,6 +156,7 @@ public class EMSEntityService {
                         }
                     }
                 }
+                Collections.sort(insurances);
                 ew.setInsurancePolicies(insurances);
                 int premiumPerMonth = 0, netSalary = 0;
                 for(Insurance insurance: insurances) {

@@ -6,6 +6,7 @@ import com.emsmanagementsystem.repository.DependentRepository;
 import com.emsmanagementsystem.repository.InsuranceRepository;
 import com.emsmanagementsystem.repository.SalaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class CollectionsCreationService {
     }
 
     public List<Insurance> getAllInsurances() {
-        return insuranceRepository.findAll();
+        return insuranceRepository.findAll(Sort.by(Sort.Direction.ASC, "insuredId"));
     }
 
     public Insurance updateInsuranceById(String id, Insurance insurance) {
@@ -62,7 +63,7 @@ public class CollectionsCreationService {
     }
 
     public List<Dependent> getAllDependents() {
-        return dependentRepository.findAll();
+        return dependentRepository.findAll(Sort.by(Sort.Direction.ASC, "dependentId"));
     }
 
     public Dependent updateDependentById(String id, Dependent dependent) {
